@@ -1,0 +1,15 @@
+spring:
+  data:
+    mongodb:
+      database: appointment
+      hots: localhost
+      port: 27017
+
+server:
+  port: 8082
+
+nurse:
+  uri: http://localhost:8080
+
+patient:
+  uri: http://localhost:8081
