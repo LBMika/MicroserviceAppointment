@@ -52,8 +52,8 @@ public class AppointmentController {
      * @param id The patient's id
      * @return List of appointments
      */
-    @GetMapping("/patient/{id}")
-    public List<Appointment> findAllAppointmentByPatientId(@PathVariable String id) {
+    @GetMapping("/patients/{id}")
+    public List<Appointment> findAllFutureAppointmentByPatientId(@PathVariable String id) {
         return this.service.findAllFutureAppointmentByPatientId(id);
     }
 
@@ -62,8 +62,8 @@ public class AppointmentController {
      * @param id The nurse's id
      * @return List of appointments
      */
-    @GetMapping("nurse/{id}")
-    public List<Appointment> findAllAppointmentByNurseId(@PathVariable String id) {
+    @GetMapping("nurses/{id}")
+    public List<Appointment> findAllFutureAppointmentByNurseId(@PathVariable String id) {
         return this.service.findAllFutureAppointmentByNurseId(id);
     }
 
@@ -72,7 +72,7 @@ public class AppointmentController {
      * @param id The appointment's id
      * @return An AppointmentDetailDTO
      */
-    @GetMapping("/detail/{id}")
+    @GetMapping("/details/{id}")
     public AppointmentDetailDTO findDetails(@PathVariable String id) {
         return this.service.findDetails(id);
     }
@@ -83,7 +83,7 @@ public class AppointmentController {
      * @return The newly created appointment
      */
     @PostMapping
-    public ResponseEntity<Appointment> save(@RequestBody Appointment appointment) {
+    public ResponseEntity<Appointment> create(@RequestBody Appointment appointment) {
         return ResponseEntity.status(HttpStatus.CREATED).body(this.service.save(appointment));
     }
 
@@ -93,7 +93,7 @@ public class AppointmentController {
      * @return The modified appointment
      */
     @PutMapping
-    public ResponseEntity<Appointment> updateById(@RequestBody Appointment appointment) {
+    public ResponseEntity<Appointment> update(@RequestBody Appointment appointment) {
         return ResponseEntity.ok(this.service.update(appointment));
     }
 
@@ -103,7 +103,7 @@ public class AppointmentController {
      * @return
      */
     @DeleteMapping
-    public ResponseEntity<Boolean> deleteById(@RequestBody Appointment appointment) {
+    public ResponseEntity<Boolean> delete(@RequestBody Appointment appointment) {
         this.service.deleteById(appointment.getId());
         return ResponseEntity.ok(true);
     }
